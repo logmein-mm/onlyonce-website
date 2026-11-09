@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Only Once, Santiago de Chile: salon for skin, lashes, nails and hair extensions by Valentina Reyes.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Only Once Salon</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:ital,wght@0,300;0,400;0,500;1,300&display=swap">
+<style>
+/* Layout: slim sticky nav, hash-routed pages, one quiet accent (koper) on a pearl ground; price tables as the core content */
+:root{
+  --bg:#f6f3f4;        /* pearl, slight rose tint */
+  --panel:#ece6e8;
+  --fg:#2b2228;        /* aubergine ink */
+  --muted:#6f6169;
+  --line:#d9d0d4;
+  --accent:#a8673d;    /* koper */
+  --accent-ink:#ffffff;
+  --display:'Marcellus',Georgia,'Times New Roman',serif;
+  --body:'Jost','Helvetica Neue',Arial,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1d181b;--panel:#272125;--fg:#f1eaed;--muted:#b3a5ab;--line:#3c3338;--accent:#d49a6c;--accent-ink:#1d181b;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1d181b;--panel:#272125;--fg:#f1eaed;--muted:#b3a5ab;--line:#3c3338;--accent:#d49a6c;--accent-ink:#1d181b;color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-weight:300;font-size:17px;line-height:1.6;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;margin:0;text-wrap:balance}
+h1{font-size:clamp(2.4rem,7vw,4.6rem);letter-spacing:.01em}
+h2{font-size:clamp(1.7rem,4vw,2.6rem)}
+h3{font-size:1.25rem}
+p{margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:500}
+
+/* nav */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;flex-wrap:wrap}
+.brand{font-family:var(--display);font-size:1.35rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;display:flex;align-items:center;gap:12px}
+.brand small{font-family:var(--body);font-size:.68rem;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;font-weight:400}
+nav{display:flex;gap:4px 18px;flex-wrap:wrap}
+nav a{text-decoration:none;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;font-weight:400;padding:6px 0;border-bottom:1px solid transparent;color:var(--muted)}
+nav a.active,nav a:hover{color:var(--fg);border-bottom-color:var(--accent)}
+nav a:focus-visible,.btn:focus-visible,.brand:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* pages */
+.page{display:none}
+.page.active{display:block}
+section{padding-block:56px}
+section+section{border-top:1px solid var(--line)}
+.btn{display:inline-block;text-decoration:none;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;padding:14px 26px;background:var(--accent);color:var(--accent-ink);border:1px solid var(--accent)}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--fg)}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:end;padding-block:72px 56px}
+.hero p.lead{font-size:1.15rem;max-width:34em;margin-top:22px;color:var(--muted)}
+.mono{font-variant-numeric:tabular-nums}
+.monogram{aspect-ratio:4/5;max-width:100%;width:100%;border:1px solid var(--line);background:var(--panel);overflow:hidden}
+.monogram img{width:100%;height:100%;object-fit:cover;display:block}
+.monogram span{font-family:var(--display);font-size:clamp(4rem,12vw,9rem);line-height:1;letter-spacing:-.04em}
+.monogram em{position:absolute;bottom:18px;left:0;right:0;text-align:center;font-style:normal;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+
+/* grids */
+.grid{display:grid;gap:28px;grid-template-columns:repeat(3,1fr)}
+.grid.two{grid-template-columns:repeat(2,1fr)}
+.card{border-top:1px solid var(--fg);padding-top:16px;min-width:0}
+.card h3{margin-bottom:8px}
+.card p{color:var(--muted);font-size:.98rem}
+.card a{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;text-decoration:none;color:var(--accent);display:inline-block;margin-top:12px}
+
+/* price lists */
+.plist{list-style:none;margin:16px 0 0;padding:0;max-width:40em}
+.plist li{display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:9px 0;border-bottom:1px dotted var(--line);font-size:1rem}
+.plist li span:first-child{min-width:0}
+.plist li span:last-child{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:400}
+.note{font-size:.85rem;color:var(--muted);margin-top:14px;max-width:40em}
+.photos{display:grid;gap:14px;grid-template-columns:repeat(3,1fr);margin-top:36px}
+.photos figure{margin:0;min-width:0}
+.photos .ph{aspect-ratio:4/5;max-width:100%;background:var(--panel);border:1px solid var(--line);display:grid;place-items:center;overflow:hidden}
+.photos.wide{grid-template-columns:repeat(3,1fr)}
+.photos.wide .ph{aspect-ratio:4/3}
+.photos .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.photos .ph span{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.photos figcaption{font-size:.82rem;color:var(--muted);margin-top:8px}
+.gal{display:grid;gap:12px;grid-template-columns:repeat(4,1fr);margin-top:28px}
+.gal figure{margin:0;min-width:0}
+.gal .ph{aspect-ratio:1;max-width:100%;overflow:hidden;background:var(--panel);border:1px solid var(--line)}
+.gal .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.gal figcaption{font-size:.78rem;color:var(--muted);margin-top:6px}
+.cols{display:grid;gap:40px 56px;grid-template-columns:repeat(2,1fr)}
+.cols>div{min-width:0}
+.intro{max-width:36em;color:var(--muted);margin-top:14px;font-size:1.05rem}
+
+/* over / contact */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.split>div{min-width:0}
+.fact{display:grid;grid-template-columns:auto 1fr;gap:6px 20px;font-size:.98rem;margin-top:18px}
+.fact dt{color:var(--muted);text-transform:uppercase;font-size:.72rem;letter-spacing:.14em;padding-top:5px}
+.fact dd{margin:0}
+.fact>div{display:grid;gap:4px}
+@media (max-width:760px){.fact[style]{grid-template-columns:repeat(2,auto)!important}}
+.copy{display:inline-flex;align-items:center;gap:10px}
+.copy button{font:inherit;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;background:none;border:1px solid var(--line);color:var(--muted);padding:4px 10px;cursor:pointer}
+.copy button:focus-visible{outline:2px solid var(--accent)}
+form{display:grid;gap:14px;margin-top:20px}
+label{display:grid;gap:6px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+input,select,textarea{font:inherit;font-size:1rem;padding:11px 12px;border:1px solid var(--line);background:var(--bg);color:var(--fg);width:100%}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+.ok{padding:14px 16px;border:1px solid var(--accent);font-size:.95rem}
+
+/* onlyonce relation band */
+.band{background:var(--panel)}
+.band .wrap{padding-block:48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.band p{color:var(--muted);max-width:34em;margin-top:12px}
+footer{border-top:1px solid var(--line);font-size:.82rem;color:var(--muted)}
+footer .wrap{padding-block:28px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:760px){
+  .hero,.grid,.grid.two,.cols,.split,.band .wrap{grid-template-columns:1fr}
+  .photos{grid-template-columns:repeat(2,1fr)}
+  .photos.wide{grid-template-columns:1fr}
+  .gal{grid-template-columns:repeat(2,1fr)}
+  .hero{padding-block:48px 40px}
+  .monogram{max-width:100%;aspect-ratio:4/3}
+  section{padding-block:44px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .page.active{animation:fade .35s ease-out}
+  @keyframes fade{from{opacity:.6;transform:translateY(4px)}to{opacity:1;transform:none}}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#home">Only Once <small>Beauty & Hair Extensions</small></a>
+    <nav id="nav">
+      <a href="#home">Home</a>
+      <a href="#beauty">Beauty</a>
+      <a href="#nails">Nails</a>
+      <a href="#extensions">Hair Extensions</a>
+      <a href="#work">Our Work</a>
+      <a href="#prices">Prices</a>
+      <a href="#about">About Valentina</a>
+      <a href="#contact">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- HOME -->
+<div class="page" id="page-home">
+  <div class="wrap hero">
+    <div>
+      <p class="eyebrow">Beauty salon · nails · hair extensions · Santiago</p>
+      <h1>You are only yourself once. Take good care of her.</h1>
+      <p class="lead">Only Once is the salon of Valentina Reyes: certified beautician, nail stylist and hair‑extension specialist. One address for skin, lashes, nails and hair, always with Valentina herself at the chair.</p>
+      <div class="actions">
+        <a class="btn" href="#contact">Book an appointment</a>
+        <a class="btn ghost" href="#prices">See prices</a>
+      </div>
+    </div>
+    <div class="monogram"><img src="img/hero.jpg" alt="Eyelash extensions, close-up" ></div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Treatments</p>
+      <h2>Four specialties, one specialist</h2>
+      <div class="grid" style="margin-top:32px">
+        <div class="card"><h3>Skin & lashes</h3><p>Bio‑peeling, quick treatment, brow and lash tinting, Elleebana lash lift and eyelash extensions (classic one‑by‑one and volume).</p><a href="#beauty">Beauty →</a></div>
+        <div class="card"><h3>Nails</h3><p>New acrylic and gel sets, infills, gel polish and seal & protect. Clean, long‑lasting and shaped to your own nail.</p><a href="#nails">Nails →</a></div>
+        <div class="card"><h3>Hair extensions</h3><p>Volume and length with real‑hair extensions: fitting, maintenance, repositioning and removal.</p><a href="#extensions">Extensions →</a></div>
+      </div>
+      <div class="actions"><a class="btn ghost" href="#work">See our work</a></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Results</p>
+      <h2>Real results, not promises</h2>
+      <p class="intro">Every photo on this site is our own work, taken in the salon with the client's permission. No stock photos, no models.</p>
+      <div class="photos wide">
+        <figure><div class="ph"><img src="img/e-1.jpg" alt="Hair extensions, before and after" loading="lazy"></div><figcaption>Hair extensions, same day</figcaption></figure>
+        <figure><div class="ph"><img src="img/w-6.jpg" alt="Lash lift, before and after" loading="lazy"></div><figcaption>Lash lift, same day</figcaption></figure>
+        <figure><div class="ph"><img src="img/n-5.jpg" alt="French nails, almond shape" loading="lazy"></div><figcaption>French, almond shape</figcaption></figure>
+      </div>
+      <dl class="fact" style="margin-top:28px;grid-template-columns:repeat(4,auto);gap:8px 32px">
+        <div><dt>Specialties</dt><dd>4</dd></div>
+        <div><dt>Specialist</dt><dd>1, always Valentina</dd></div>
+        <div><dt>Clients at a time</dt><dd>1</dd></div>
+        <div><dt>Extension consultation</dt><dd>Free</dd></div>
+      </dl>
+      <p class="note" style="margin-top:20px">Been to Only Once? Leave a review on Google; it helps others find the salon.</p>
+    </div>
+  </section>
+
+  <div class="band">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Why Only Once</p>
+        <h2>The name is a promise</h2>
+        <p>You are only yourself once: one face, one skin, one head of hair. That is why every treatment at Only Once is tailored to you, and why you only need to look once for a specialist who understands that. More about the name at <a href="https://onlyonce.com" target="_blank" rel="noopener">onlyonce.com</a>.</p>
+      </div>
+      <div>
+        <dl class="fact">
+          <dt>Salon</dt><dd>Only Once, beauty & hair extensions, Santiago de Chile</dd>
+          <dt>Owner</dt><dd>Valentina Reyes, certified beautician</dd>
+          <dt>Online</dt><dd><a href="https://onlyonce.com" target="_blank" rel="noopener">onlyonce.com</a></dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Gift</p>
+      <div class="split">
+        <div><h2>Only Once gift voucher</h2><p class="intro">A treatment or an amount of your choice, in an envelope you will be proud to give. Available in the salon, also for products from the skincare line.</p></div>
+        <div><p class="intro">Request a voucher through the booking form and mention who it is for and the amount. You will hear from us as soon as it is ready.</p><div class="actions"><a class="btn ghost" href="#contact">Request a voucher</a></div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- BEAUTY -->
+<div class="page" id="page-beauty">
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Beauty</p>
+      <h2>Skin, brows and lashes</h2>
+      <p class="intro">Every facial starts with a skin analysis. Then you and Valentina choose between a quick refresh or a peeling course, and for home there are products from the same line.</p>
+      <div class="photos wide">
+        <figure><div class="ph" id="ph-beauty-1"><img src="img/beauty-1.jpg" alt="Classic one-by-one eyelash extensions" loading="lazy"></div><figcaption>Classic one‑by‑one extensions</figcaption></figure>
+        <figure><div class="ph" id="ph-beauty-2"><img src="img/beauty-2.jpg" alt="Volume eyelash extensions" loading="lazy"></div><figcaption>Volume set</figcaption></figure>
+        <figure><div class="ph" id="ph-beauty-3"><img src="img/beauty-3.jpg" alt="Eyelash extensions being applied" loading="lazy"></div><figcaption>Applied lash by lash</figcaption></figure>
+      </div>
+      <div class="cols" style="margin-top:36px">
+        <div>
+          <h3>Face</h3>
+          <ul class="plist">
+            <li><span>Bio‑peeling</span><span>$ 65.000</span></li>
+            <li><span>Bio‑peeling course (3×)</span><span>$ 180.000</span></li>
+            <li><span>Quick treatment</span><span>$ 40.000</span></li>
+            <li><span>Brow shaping</span><span>$ 7.500</span></li>
+            <li><span>Brow tint</span><span>$ 7.500</span></li>
+            <li><span>Lash tint</span><span>$ 7.500</span></li>
+          </ul>
+          <h3 style="margin-top:36px">Waxing</h3>
+          <ul class="plist">
+            <li><span>Lower or upper legs</span><span>$ 15.000</span></li>
+            <li><span>Full legs</span><span>$ 25.000</span></li>
+            <li><span>Lower or upper arms</span><span>$ 15.000</span></li>
+            <li><span>Full arms</span><span>$ 25.000</span></li>
+            <li><span>Upper lip or chin</span><span>$ 8.000</span></li>
+            <li><span>Cheeks</span><span>$ 10.000</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Eyelash extensions</h3>
+          <ul class="plist">
+            <li><span>New set, classic one‑by‑one</span><span>$ 45.000</span></li>
+            <li><span>Infill after 2 weeks</span><span>$ 20.000</span></li>
+            <li><span>Infill after 3 weeks</span><span>$ 25.000</span></li>
+            <li><span>Infill after 4 weeks</span><span>$ 30.000</span></li>
+            <li><span>New set, volume</span><span>$ 75.000</span></li>
+            <li><span>Volume infill after 2 weeks</span><span>$ 25.000</span></li>
+            <li><span>Volume infill after 3 weeks</span><span>$ 35.000</span></li>
+            <li><span>Removal</span><span>$ 10.000</span></li>
+          </ul>
+          <h3 style="margin-top:36px">Lash lift</h3>
+          <ul class="plist">
+            <li><span>Elleebana lash lift</span><span>$ 50.000</span></li>
+            <li><span>Elleebana lash lift + tint</span><span>$ 55.000</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="note">Prices in Chilean pesos (CLP), VAT included. An infill more than 4 weeks after the previous appointment counts as a new set.</p>
+      <div class="actions"><a class="btn" href="#contact">Book an appointment</a></div>
+    </div>
+  </section>
+</div>
+
+<!-- NAILS -->
+<div class="page" id="page-nails">
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Nails</p>
+      <h2>Acrylic, gel and gel polish</h2>
+      <p class="intro">A new set is built on your own nail, so you decide the shape and length. Infills are due after three to four weeks; removal is always done with care for the natural nail.</p>
+      <div class="photos">
+        <figure><div class="ph" id="ph-nails-1"><img src="img/nagels-1.jpg" alt="New gel set, nude" loading="lazy"></div><figcaption>New gel set, nude</figcaption></figure>
+        <figure><div class="ph" id="ph-nails-2"><img src="img/nagels-2.jpg" alt="French on acrylic" loading="lazy"></div><figcaption>French on acrylic</figcaption></figure>
+        <figure><div class="ph" id="ph-nails-3"><img src="img/nagels-3.jpg" alt="Gel polish, matte and dark" loading="lazy"></div><figcaption>Gel polish, matte and dark</figcaption></figure>
+      </div>
+      <div class="cols" style="margin-top:36px">
+        <div>
+          <ul class="plist">
+            <li><span>New set, acrylic or gel</span><span>$ 35.000</span></li>
+            <li><span>Infill</span><span>$ 30.000</span></li>
+            <li><span>Gel polish</span><span>$ 20.000</span></li>
+            <li><span>Seal & protect</span><span>$ 10.000</span></li>
+            <li><span>Removal</span><span>$ 15.000</span></li>
+          </ul>
+          <p class="note">Prices in Chilean pesos (CLP), VAT included. Nail art, French and babyboomer on request; the surcharge is agreed beforehand.</p>
+        </div>
+        <div>
+          <h3>Choose your colour in the salon</h3>
+          <p class="note" style="margin-top:8px">All gel polish and acrylic colours are ready as swatches, so you can hold them against your skin before you decide.</p>
+          <div class="photos wide" style="grid-template-columns:repeat(2,1fr);margin-top:16px">
+            <figure><div class="ph"><img src="img/stalen-1.jpg" alt="Gel polish colour swatches" loading="lazy"></div><figcaption>Gel polish swatches</figcaption></figure>
+            <figure><div class="ph"><img src="img/stalen-2.jpg" alt="Nail colour fan" loading="lazy"></div><figcaption>Acrylic and glitter colours</figcaption></figure>
+          </div>
+          <h3 style="margin-top:36px">Good to know</h3>
+          <ul class="plist">
+            <li><span>No‑show without notice</span><span>full price</span></li>
+            <li><span>Cancellation</span><span>up to 24 hours ahead</span></li>
+            <li><span>Payment</span><span>card or cash</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="actions"><a class="btn" href="#contact">Book an appointment</a></div>
+    </div>
+  </section>
+</div>
+
+<!-- EXTENSIONS -->
+<div class="page" id="page-extensions">
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Hair extensions</p>
+      <h2>Length and volume, in real hair</h2>
+      <p class="intro">Hair extensions are custom work. That is why every extension client starts with a free consultation: matching your colour, choosing the method that suits your hair and deciding the number of strands. Only then do you get a price.</p>
+      <div class="photos wide">
+        <figure><div class="ph" id="ph-ext-1"><img src="img/ext-1.jpg" alt="Before and after: length and volume" loading="lazy"></div><figcaption>Before and after: length and volume</figcaption></figure>
+        <figure><div class="ph" id="ph-ext-2"><img src="img/ext-2.jpg" alt="Before and after: blonde, half head" loading="lazy"></div><figcaption>Before and after: blonde, half head</figcaption></figure>
+        <figure><div class="ph" id="ph-ext-3"><img src="img/ext-3.jpg" alt="Before and after: dark, full head" loading="lazy"></div><figcaption>Before and after: dark, full head</figcaption></figure>
+      </div>
+      <div class="grid" style="margin-top:36px">
+        <div class="card"><h3>Consultation & colour match</h3><p>30 minutes, free. You see and feel the hair before you decide.</p></div>
+        <div class="card"><h3>Fitting</h3><p>Priced by method, length and number of strands. Includes a blended cut.</p></div>
+        <div class="card"><h3>Maintenance</h3><p>Repositioning every 6 to 8 weeks, removal with protective care for your own hair.</p></div>
+      </div>
+      <h3 style="margin-top:44px">Guide prices</h3>
+      <ul class="plist">
+        <li><span>Consultation and colour match</span><span>free</span></li>
+        <li><span>Half head, volume</span><span>from $ 275.000</span></li>
+        <li><span>Full head, length and volume</span><span>from $ 450.000</span></li>
+        <li><span>Repositioning</span><span>from $ 95.000</span></li>
+        <li><span>Removal</span><span>from $ 45.000</span></li>
+      </ul>
+      <p class="note">Guide prices in Chilean pesos (CLP), fitting included, hair excluded; the price of the hair depends on length and quality and is quoted at the consultation.</p>
+      <div class="actions"><a class="btn" href="#contact">Book a consultation</a></div>
+    </div>
+  </section>
+</div>
+
+<!-- WORK -->
+<div class="page" id="page-work">
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Our work</p>
+      <h2>What Valentina makes, in pictures</h2>
+      <p class="intro">Every photo below is our own work from the salon, shared with the client's permission. Before‑and‑after photos were taken on the same day.</p>
+      <h3 style="margin-top:44px">Lashes</h3>
+      <div class="gal"><figure><div class="ph"><img src="img/w-1.jpg" alt="Classic, natural" loading="lazy"></div><figcaption>Classic, natural</figcaption></figure><figure><div class="ph"><img src="img/w-2.jpg" alt="Classic" loading="lazy"></div><figcaption>Classic</figcaption></figure><figure><div class="ph"><img src="img/w-3.jpg" alt="Volume set" loading="lazy"></div><figcaption>Volume set</figcaption></figure><figure><div class="ph"><img src="img/w-4.jpg" alt="Volume, full and black" loading="lazy"></div><figcaption>Volume, full and black</figcaption></figure><figure><div class="ph"><img src="img/w-5.jpg" alt="Lash lift with tint" loading="lazy"></div><figcaption>Lash lift with tint</figcaption></figure><figure><div class="ph"><img src="img/w-6.jpg" alt="Before and after: lash lift" loading="lazy"></div><figcaption>Before and after: lash lift</figcaption></figure><figure><div class="ph"><img src="img/w-7.jpg" alt="Before and after: brows and lashes" loading="lazy"></div><figcaption>Before and after: brows and lashes</figcaption></figure><figure><div class="ph"><img src="img/w-8.jpg" alt="Volume, close-up" loading="lazy"></div><figcaption>Volume, close-up</figcaption></figure></div>
+      <h3 style="margin-top:48px">Nails</h3>
+      <div class="gal"><figure><div class="ph"><img src="img/n-1.jpg" alt="Gel, nude pink" loading="lazy"></div><figcaption>Gel, nude pink</figcaption></figure><figure><div class="ph"><img src="img/n-2.jpg" alt="Gel, light pink" loading="lazy"></div><figcaption>Gel, light pink</figcaption></figure><figure><div class="ph"><img src="img/n-3.jpg" alt="Acrylic, black with glitter" loading="lazy"></div><figcaption>Acrylic, black with glitter</figcaption></figure><figure><div class="ph"><img src="img/n-4.jpg" alt="Gel, lilac" loading="lazy"></div><figcaption>Gel, lilac</figcaption></figure><figure><div class="ph"><img src="img/n-5.jpg" alt="French, almond shape" loading="lazy"></div><figcaption>French, almond shape</figcaption></figure><figure><div class="ph"><img src="img/n-6.jpg" alt="Black with nail art" loading="lazy"></div><figcaption>Black with nail art</figcaption></figure><figure><div class="ph"><img src="img/n-7.jpg" alt="Gel polish, sage" loading="lazy"></div><figcaption>Gel polish, sage</figcaption></figure><figure><div class="ph"><img src="img/n-8.jpg" alt="Acrylic, grey and long" loading="lazy"></div><figcaption>Acrylic, grey and long</figcaption></figure></div>
+      <h3 style="margin-top:48px">Hair extensions</h3>
+      <div class="gal"><figure><div class="ph"><img src="img/e-1.jpg" alt="Before and after: brown, volume" loading="lazy"></div><figcaption>Before and after: brown, volume</figcaption></figure><figure><div class="ph"><img src="img/e-2.jpg" alt="Before and after: length" loading="lazy"></div><figcaption>Before and after: length</figcaption></figure><figure><div class="ph"><img src="img/e-3.jpg" alt="Before and after: blonde, length" loading="lazy"></div><figcaption>Before and after: blonde, length</figcaption></figure><figure><div class="ph"><img src="img/e-4.jpg" alt="Fitting the strands" loading="lazy"></div><figcaption>Fitting the strands</figcaption></figure><figure><div class="ph"><img src="img/e-5.jpg" alt="Before and after: dark" loading="lazy"></div><figcaption>Before and after: dark</figcaption></figure><figure><div class="ph"><img src="img/e-6.jpg" alt="Before and after: curls to length" loading="lazy"></div><figcaption>Before and after: curls to length</figcaption></figure><figure><div class="ph"><img src="img/e-7.jpg" alt="Fantasy colour, pink" loading="lazy"></div><figcaption>Fantasy colour, pink</figcaption></figure><figure><div class="ph"><img src="img/e-8.jpg" alt="Pink accent strands" loading="lazy"></div><figcaption>Pink accent strands</figcaption></figure></div>
+      <div class="actions"><a class="btn" href="#contact">Book an appointment</a></div>
+    </div>
+  </section>
+</div>
+
+<!-- PRICES -->
+<div class="page" id="page-prices">
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Prices</p>
+      <h2>All prices on one page</h2>
+      <p class="intro">All prices in Chilean pesos (CLP), VAT included. Products from the salon line are for sale in the salon and are the same products used during treatments.</p>
+      <div class="cols" style="margin-top:36px">
+        <div>
+          <h3>Face & waxing</h3>
+          <ul class="plist">
+            <li><span>Bio‑peeling</span><span>$ 65.000</span></li>
+            <li><span>Bio‑peeling course</span><span>$ 180.000</span></li>
+            <li><span>Quick treatment</span><span>$ 40.000</span></li>
+            <li><span>Brow shaping or tint</span><span>$ 7.500</span></li>
+            <li><span>Lash tint</span><span>$ 7.500</span></li>
+            <li><span>Waxing, full legs</span><span>$ 25.000</span></li>
+            <li><span>Waxing, full arms</span><span>$ 25.000</span></li>
+            <li><span>Waxing, half leg or arm</span><span>$ 15.000</span></li>
+            <li><span>Waxing, upper lip or chin</span><span>$ 8.000</span></li>
+            <li><span>Waxing, cheeks</span><span>$ 10.000</span></li>
+          </ul>
+          <h3 style="margin-top:36px">Nails</h3>
+          <ul class="plist">
+            <li><span>New set, acrylic or gel</span><span>$ 35.000</span></li>
+            <li><span>Infill</span><span>$ 30.000</span></li>
+            <li><span>Gel polish</span><span>$ 20.000</span></li>
+            <li><span>Seal & protect</span><span>$ 10.000</span></li>
+            <li><span>Removal</span><span>$ 15.000</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Lashes</h3>
+          <ul class="plist">
+            <li><span>New set, classic one‑by‑one</span><span>$ 45.000</span></li>
+            <li><span>Infill 2 / 3 / 4 weeks</span><span>$ 20.000 / 25.000 / 30.000</span></li>
+            <li><span>New set, volume</span><span>$ 75.000</span></li>
+            <li><span>Volume infill 2 / 3 weeks</span><span>$ 25.000 / 35.000</span></li>
+            <li><span>Removal</span><span>$ 10.000</span></li>
+            <li><span>Elleebana lash lift</span><span>$ 50.000</span></li>
+            <li><span>Lash lift + tint</span><span>$ 55.000</span></li>
+          </ul>
+          <h3 style="margin-top:36px">Hair extensions</h3>
+          <ul class="plist">
+            <li><span>Consultation and colour match</span><span>free</span></li>
+            <li><span>Half head</span><span>from $ 275.000</span></li>
+            <li><span>Full head</span><span>from $ 450.000</span></li>
+            <li><span>Repositioning</span><span>from $ 95.000</span></li>
+            <li><span>Removal</span><span>from $ 45.000</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="margin-top:48px">Products for home</h3>
+      <div class="cols" style="margin-top:12px">
+        <div>
+          <ul class="plist">
+            <li><span>Cleansing milk 200 ml</span><span>$ 25.000</span></li>
+            <li><span>Tonic lotion 200 ml</span><span>$ 30.000</span></li>
+            <li><span>Liquid soap 200 ml</span><span>$ 33.000</span></li>
+            <li><span>Herbal lotion 200 ml</span><span>$ 30.000</span></li>
+            <li><span>Eye make‑up remover 200 ml</span><span>$ 25.000</span></li>
+            <li><span>Face luster 50 ml</span><span>$ 35.000</span></li>
+            <li><span>Apricot & almond scrub 50 ml</span><span>$ 35.000</span></li>
+            <li><span>Body scrub or body lotion 400 ml</span><span>$ 35.000</span></li>
+          </ul>
+        </div>
+        <div>
+          <ul class="plist">
+            <li><span>Hydration cream 50 ml (light / plus)</span><span>$ 45.000</span></li>
+            <li><span>Hydration serum 30 ml</span><span>$ 40.000</span></li>
+            <li><span>Hydration gold mask 50 ml</span><span>$ 40.000</span></li>
+            <li><span>Rebalancing cream 50 ml</span><span>$ 45.000</span></li>
+            <li><span>Rejuvenating wrinkle smooth cream 50 ml</span><span>$ 70.000</span></li>
+            <li><span>Advanced cream 50 ml</span><span>$ 105.000</span></li>
+            <li><span>Advanced serum 30 ml</span><span>$ 100.000</span></li>
+            <li><span>Mini kit (all skin types or oily skin)</span><span>$ 70.000</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="note">The full product line (Apaline, Neo‑white, Blue blood, masks and serums) can be seen in the salon.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ABOUT -->
+<div class="page" id="page-about">
+  <section>
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">About Valentina</p>
+        <h2>Certified, and still curious</h2>
+        <p class="intro">Valentina Reyes is a certified beautician with additional training in eyelash extensions, Elleebana lash lift and hair extensions. In 2026 she opened Only Once, bringing lash extensions, lash lift, nail styling and hair extensions under one roof.</p>
+        <p class="intro">One thing never changes: Valentina does every treatment herself. No trainees on your lashes, no rotating faces. You build a relationship with one specialist who knows your skin, nails and hair.</p>
+      </div>
+      <div>
+        <dl class="fact">
+          <dt>Training</dt><dd>Certified beautician</dd>
+          <dt>Also</dt><dd>Eyelash extensions · Elleebana lash lift · nail styling · hair extensions</dd>
+          <dt>Since</dt><dd>2026</dd>
+          <dt>How we work</dt><dd>By appointment only, one client at a time</dd>
+        </dl>
+        <div class="photos wide" style="grid-template-columns:repeat(2,1fr);margin-top:28px">
+          <figure><div class="ph" style="aspect-ratio:3/4"><img src="img/e-4.jpg" alt="Valentina fitting hair extensions" loading="lazy"></div><figcaption>Valentina at work</figcaption></figure>
+          <figure><div class="ph" style="aspect-ratio:3/4"><img src="img/salon.jpg" alt="Product cabinet in the salon" loading="lazy"></div><figcaption>The product cabinet in the salon</figcaption></figure>
+        </div>
+        <div class="band" style="margin-top:32px;padding:24px">
+          <p class="eyebrow">Only Once</p>
+          <p style="margin-top:8px">The story behind the name is at <a href="https://onlyonce.com" target="_blank" rel="noopener">onlyonce.com</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CONTACT -->
+<div class="page" id="page-contact">
+  <section>
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">Book</p>
+        <h2>Plan your visit</h2>
+        <p class="intro">Send us what you would like, and you will receive a proposed date and time within one working day. For hair extensions we start with a free consultation.</p>
+        <dl class="fact">
+          <dt>E‑mail</dt><dd><span class="copy"><span id="mail" data-u="onlyonce.santiago" data-d="gmail" data-t="com">onlyonce.santiago [at] gmail [dot] com</span><button type="button" data-copy="mail">Copy</button></span></dd>
+          <dt>Phone</dt><dd><span class="copy"><span id="tel">+56 9 1234 5678</span><button type="button" data-copy="tel">Copy</button></span></dd>
+          <dt>Address</dt><dd>Av. Providencia 1234, oficina 302<br>Providencia, Santiago de Chile</dd>
+          <dt>Hours</dt><dd>By appointment only, evenings too</dd>
+          <dt>Online</dt><dd><a href="https://onlyonce.com" target="_blank" rel="noopener">onlyonce.com</a></dd>
+        </dl>
+      </div>
+      <div>
+        <form id="afspraak" novalidate>
+          <label>Name<input id="f-naam" name="naam" type="text" required autocomplete="name"></label>
+          <label>E‑mail or phone<input id="f-contact" name="contact" type="text" required></label>
+          <label>Treatment
+            <select id="f-beh" name="behandeling">
+              <option>Facial</option>
+              <option>Eyelash extensions</option>
+              <option>Lash lift</option>
+              <option>Nails</option>
+              <option>Hair extensions (consultation)</option>
+              <option>Waxing</option>
+              <option>Gift voucher</option>
+            </select>
+          </label>
+          <label>Preferred day and time<input id="f-tijd" name="tijd" type="text" placeholder="e.g. Thursday evening or Saturday morning"></label>
+          <label>Notes<textarea id="f-opm" name="opmerking" rows="3"></textarea></label>
+          <div class="actions" style="margin-top:4px"><button class="btn" type="submit" style="font-family:inherit;cursor:pointer">Send request</button></div>
+          <p class="note" id="f-hint">Can't send? E‑mail the same details to the address above.</p>
+        </form>
+        <div class="ok" id="f-ok" hidden>Thank you. Your e‑mail program should now open with the request below addressed to <strong class="mailx"></strong>. If it does not, copy the text and send it yourself.<pre id="f-out" style="white-space:pre-wrap;font:inherit;margin:12px 0 0"></pre></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="jaar">2026</span> Only Once · Valentina Reyes · Santiago</span>
+    <span><a href="https://onlyonce.com" target="_blank" rel="noopener">onlyonce.com</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var pages=['home','beauty','nails','extensions','work','prices','about','contact'];
+  function show(){
+    var h=(location.hash||'#home').slice(1);
+    if(pages.indexOf(h)<0)h='home';
+    pages.forEach(function(p){document.getElementById('page-'+p).classList.toggle('active',p===h)});
+    var links=document.querySelectorAll('#nav a');
+    for(var i=0;i<links.length;i++)links[i].classList.toggle('active',links[i].getAttribute('href')==='#'+h);
+    window.scrollTo({top:0});
+  }
+  window.addEventListener('hashchange',show);show();
+
+  document.querySelectorAll('[data-copy]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var el=document.getElementById(b.getAttribute('data-copy')),t=el.textContent;
+      function sel(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r)}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){b.textContent='Copied'},sel)}else sel();
+    });
+  });
+
+  var f=document.getElementById('afspraak');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var naam=f.naam.value.trim(),c=f.contact.value.trim();
+    if(!naam||!c){document.getElementById('f-hint').textContent='Please fill in at least your name and an e-mail address or phone number.';return}
+    var txt='Booking request Only Once\nName: '+naam+'\nContact: '+c+'\nTreatment: '+f.behandeling.value+'\nPreference: '+(f.tijd.value||'none')+'\nNotes: '+(f.opmerking.value||'none');
+    document.getElementById('f-out').textContent=txt;
+    f.hidden=true;document.getElementById('f-ok').hidden=false;
+    var m=document.getElementById('mail'),to=m.getAttribute('data-u')+'\u0040'+m.getAttribute('data-d')+'.'+m.getAttribute('data-t');
+    try{window.location.href='mailto:'+to+'?subject='+encodeURIComponent('Booking request Only Once')+'&body='+encodeURIComponent(txt)}catch(err){}
+  });
+  document.getElementById('jaar').textContent=new Date().getFullYear();
+  var m=document.getElementById('mail'),addr=m.getAttribute('data-u')+'\u0040'+m.getAttribute('data-d')+'.'+m.getAttribute('data-t');
+  m.textContent=addr;
+  document.querySelectorAll('.mailx').forEach(function(x){x.textContent=addr});
+})();
+</script>
+
+</body>
+</html>
